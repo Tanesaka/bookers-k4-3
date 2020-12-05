@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
+  resources :relationships, only: [:create, :destroy]
+  get "relationships/follows/:id" => "relationships#follows", as: :relationships_follows
+  get "relationships/followers/:id" => "relationships#followers", as: :relationships_followers
   get "home/about" => "homes#about"
 end
